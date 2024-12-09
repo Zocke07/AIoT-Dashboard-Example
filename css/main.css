@@ -1,0 +1,35 @@
+:root {
+    --primary-color: #66bb6a;
+    --secondary-color: #81c784;
+    --accent-color: #a5d6a7;
+    --success-color: #4caf50;
+    --warning-color: #ffb74d;
+    --danger-color: #ef5350;
+    --text-primary: #2e7d32;
+    --text-secondary: #66bb6a;
+    --bg-primary: #f1f8e9;
+    --bg-secondary: #ffffff;
+    --hover-primary: #7cb342;
+    --hover-secondary: #9ccc65;
+    --border-color: rgba(129, 199, 132, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.main-content {
+    padding: 2rem;
+    display: grid;
+    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    margin-bottom: 60px;
+} 

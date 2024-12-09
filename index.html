@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Campus Management</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/panels.css">
+    <link rel="stylesheet" href="css/smartlock.css">
+    <link rel="stylesheet" href="css/environmental.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <style>
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            padding: 1rem;
+            margin-bottom: 60px;
+        }
+
+        .panel {
+            height: calc(100vh - 140px); /* Adjust based on your header/footer height */
+            overflow-y: auto;
+        }
+
+        .details-view {
+            background: white;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        .details-view.active {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo-section">
+            <i class="fas fa-building fa-2x"></i>
+            <h1>Smart Campus Management</h1>
+        </div>
+        <div class="datetime-section">
+            <div id="current-datetime">Loading...</div>
+        </div>
+        <div class="user-section">
+            <div class="notifications">
+                <i class="fas fa-bell"></i>
+                <span class="notification-badge">3</span>
+            </div>
+            <div class="user-profile">
+                <i class="fas fa-user-circle fa-lg"></i>
+                <span>Admin</span>
+                <button class="logout-btn">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Logout
+                </button>
+            </div>
+        </div>
+        <div class="panel-controls">
+            <button class="panel-toggle" data-panel="smartlock">
+                <i class="fas fa-lock"></i>
+                Smart Lock
+            </button>
+            <button class="panel-toggle" data-panel="environmental">
+                <i class="fas fa-leaf"></i>
+                Environmental
+            </button>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <!-- Left Side - Smart Lock -->
+        <section class="panel" id="smartlock-panel">
+            <div class="panel-header">
+                <span><i class="fas fa-lock"></i> Smart Lock System</span>
+            </div>
+            <div class="room-selection" id="smartlock-rooms"></div>
+            <div class="details-view" id="smartlock-details"></div>
+        </section>
+
+        <!-- Right Side - Environmental -->
+        <section class="panel" id="environmental-panel">
+            <div class="panel-header">
+                <span><i class="fas fa-leaf"></i> Environmental Monitoring</span>
+            </div>
+            <div class="room-selection" id="environmental-rooms"></div>
+            <div class="details-view" id="environmental-details">
+                <!-- AC Control -->
+                <div>
+                    <label for="ac-slider">AC Temperature:</label>
+                    <input type="range" id="ac-slider" min="16" max="30" step="0.5">
+                    <span id="ac-value">24°C</span>
+                    <input type="checkbox" id="ac-toggle" checked> AC On
+                </div>
+
+                <!-- Ventilation Control -->
+                <div>
+                    <label for="ventilation-slider">Ventilation:</label>
+                    <input type="range" id="ventilation-slider" min="0" max="100" step="1">
+                    <span id="ventilation-value">50%</span>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="system-status">
+            <span><span class="status-indicator status-good"></span> System Online</span>
+            <span><span class="status-indicator status-good"></span> Network: Strong</span>
+        </div>
+    </footer>
+
+    <script src="js/datetime.js"></script>
+    <script src="js/smartlock.js"></script>
+    <script src="js/environmental.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
